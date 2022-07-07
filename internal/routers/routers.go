@@ -286,6 +286,16 @@ func apiAuth(ctx *macaron.Context) {
 		ctx.Write([]byte(msg))
 		return
 	}
+
+	key := ctx.QueryTrim("key")
+	secret := ctx.QueryTrim("secret")
+	if key != app.Setting.ApiKey || secret != app.Setting.ApiSecret {
+		msg := json.CommonFailure("密钥效验失败")
+		ctx.Write([]byte(msg))
+		return
+	}
+	return
+
 	currentTimestamp := time.Now().Unix()
 	time := ctx.QueryInt64("time")
 	if time <= 0 {

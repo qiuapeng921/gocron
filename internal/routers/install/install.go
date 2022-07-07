@@ -112,8 +112,8 @@ func writeConfig(form InstallForm) error {
 		"db.max.open.conns", "100",
 		"allow_ips", "",
 		"app.name", "定时任务管理系统", // 应用名称
-		"api.key", "",
-		"api.secret", "",
+		"api.key", "go-cron",
+		"api.secret", "123456",
 		"enable_tls", "false",
 		"concurrency.queue", "500",
 		"auth_secret", utils.RandAuthToken(),
